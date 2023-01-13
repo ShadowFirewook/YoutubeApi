@@ -1,10 +1,8 @@
-package com.example.youtubeapi
+package com.example.youtubeapi.core.extension
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 
 fun ImageView.loadImage(url: String){
-
     Glide.with(this).load(url).into(this)
-
 }

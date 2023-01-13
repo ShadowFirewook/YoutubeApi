@@ -3,7 +3,7 @@ package com.example.youtubeapi.ui.playlist_detail
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.youtubeapi.base.BaseActivity
+import com.example.youtubeapi.core.ui.BaseActivity
 import com.example.youtubeapi.databinding.ActivityPlaylistDetailBinding
 import com.example.youtubeapi.ui.playlists.PlaylistsActivity
 import com.example.youtubeapi.ui.playlists.PlaylistsViewModel

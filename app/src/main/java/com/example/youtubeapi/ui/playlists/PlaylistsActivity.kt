@@ -1,21 +1,18 @@
 package com.example.youtubeapi.ui.playlists
 
+import com.example.youtubeapi.core.network.CheckInternet
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.youtubeapi.base.BaseActivity
+import com.example.youtubeapi.core.ui.BaseActivity
 import com.example.youtubeapi.databinding.ActivityPlaylistsBinding
-import com.example.youtubeapi.model.Playlists
+import com.example.youtubeapi.data.remote.model.Playlists
 import com.example.youtubeapi.ui.playlist_detail.PlaylistDetailActivity
 
-class PlaylistsActivity : BaseActivity<PlaylistsViewModel,ActivityPlaylistsBinding>() {
+class PlaylistsActivity : BaseActivity<PlaylistsViewModel, ActivityPlaylistsBinding>() {
 
     private val list = arrayListOf<Playlists.Item>()
     private val playlistsAdapter = PlaylistsAdapter(list,this::onPlaylistClick)
@@ -29,7 +26,16 @@ class PlaylistsActivity : BaseActivity<PlaylistsViewModel,ActivityPlaylistsBindi
     }
 
     override fun checkInternet() {
-        isOnline(this)
+        val connectivity = CheckInternet(this)
+        connectivity.observe(this) {
+            if (it == true) {
+                binding.noInternetConnection.root.visibility = View.GONE
+                binding.rvPlaylists.visibility = View.VISIBLE
+            } else {
+                binding.noInternetConnection.root.visibility = View.VISIBLE
+                binding.rvPlaylists.visibility = View.GONE
+            }
+        }
     }
 
     override fun initAdapter() {
@@ -41,47 +47,16 @@ class PlaylistsActivity : BaseActivity<PlaylistsViewModel,ActivityPlaylistsBindi
 
     @SuppressLint("NotifyDataSetChanged")
     override fun initViewModel() {
-        viewModel.playlists().observe(this){
+        viewModel.getPlaylists().observe(this){
             list.addAll(it.items)
             playlistsAdapter.notifyDataSetChanged()
         }
-    }
-
-    override fun initView() {
-
-    }
-
-    override fun initListener() {
-
     }
 
     private fun onPlaylistClick(id:String){
         val intent = Intent(this,PlaylistDetailActivity::class.java)
         intent.putExtra(PLAYLIST_ID,id)
         startActivity(intent)
-    }
-
-    private fun isOnline(context: Context): Boolean {
-        val connectivityManager =
-            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (connectivityManager != null) {
-            val capabilities =
-                connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-            if (capabilities != null) {
-                if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
-                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
-                    return true
-                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
-                    return true
-                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
-                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
-                    return true
-                }
-            }
-        }
-        binding.noInternetConnection.root.visibility = View.VISIBLE
-        return false
     }
 
     companion object{

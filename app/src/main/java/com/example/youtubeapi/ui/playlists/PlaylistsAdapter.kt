@@ -5,9 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.youtubeapi.R
 import com.example.youtubeapi.databinding.ItemPlaylistBinding
-import com.example.youtubeapi.loadImage
-import com.example.youtubeapi.model.Playlists
+import com.example.youtubeapi.core.extension.loadImage
+import com.example.youtubeapi.data.remote.model.Playlists
 
 class PlaylistsAdapter(
     private val playlistsList:ArrayList<Playlists.Item>,
@@ -33,7 +34,7 @@ class PlaylistsAdapter(
         fun bind(item: Playlists.Item){
             binding.ivPlaylist.loadImage(item.snippet.thumbnails.default.url)
             binding.tvVideoName.text = item.snippet.title
-            binding.tvVideosAmount.text = "${item.contentDetails.itemCount} video series"
+            binding.tvVideosAmount.text = itemView.context.getString(R.string.video_series, item.contentDetails.itemCount.toString())
 
             itemView.setOnClickListener{
                 onClick(item.id)

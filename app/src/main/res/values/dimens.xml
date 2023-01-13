@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="playlist_card_view_width">160dp</dimen>
+    <dimen name="playlist_card_view_height">90dp</dimen>
+    <dimen name="playlist_card_view_corner_radius">8dp</dimen>
+    <dimen name="playlist_card_view_margin">15dp</dimen>
+    <dimen name="playlist_view_dark_height">24dp</dimen>
+    <dimen name="playlist_text_view_text_size">12sp</dimen>
+    <dimen name="playlist_text_view_margin_end">40dp</dimen>
+    <dimen name="playlist_container_for_texts_margin_start">10dp</dimen>
+    <dimen name="video_name_text_size">20sp</dimen>
+    <dimen name="video_name_padding_top">30dp</dimen>
+    <dimen name="videos_amount_text_size">16sp</dimen>
+    <dimen name="try_again_btn_margin_horizontal">20dp</dimen>
+    <dimen name="try_again_btn_margin_bottom">20dp</dimen>
+    <dimen name="horizontal_line_height">2dp</dimen>
+    <dimen name="horizontal_line_margin_top">60dp</dimen>
+    <dimen name="no_internet_connection_tv_size">20sp</dimen>
+    <dimen name="no_internet_connection_vw_margin_top">30dp</dimen>
+
+</resources>
