@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="playlist_card_view_width">160dp</dimen>
-    <dimen name="playlist_card_view_height">90dp</dimen>
-    <dimen name="playlist_card_view_corner_radius">8dp</dimen>
-    <dimen name="playlist_card_view_margin">15dp</dimen>
+    <dimen name="card_view_width">160dp</dimen>
+    <dimen name="card_view_height">90dp</dimen>
+    <dimen name="card_view_corner_radius">8dp</dimen>
+    <dimen name="card_view_margin">15dp</dimen>
     <dimen name="playlist_view_dark_height">24dp</dimen>
     <dimen name="playlist_text_view_text_size">12sp</dimen>
     <dimen name="playlist_text_view_margin_end">40dp</dimen>

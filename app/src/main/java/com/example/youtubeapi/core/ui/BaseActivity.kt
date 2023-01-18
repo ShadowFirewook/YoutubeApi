@@ -18,12 +18,16 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
         setContentView(binding.root)
 
         checkInternet()
+        getData()
         initAdapter()
         initViewModel()
         initView()
         initListener()
+        initClick()
     }
 
+    open fun initClick() {}
+    open fun getData() {}
     open fun initAdapter() {}
     open fun initView() {}
     open fun initListener() {}

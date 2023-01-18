@@ -14,7 +14,7 @@ data class Playlists(
         val id: String,
         val kind: String,
         val snippet: Snippet
-    ){
+        ){
 
         data class ContentDetails(
             val itemCount: Int

@@ -51,14 +51,20 @@ class PlaylistsActivity : BaseActivity<PlaylistsViewModel, ActivityPlaylistsBind
         }
     }
 
-    private fun onPlaylistClick(id:String){
+    private fun onPlaylistClick(playlistId:String,videosAmount:String,playlistName: String,playlistDescription: String){
         val intent = Intent(this,PlaylistDetailActivity::class.java)
-        intent.putExtra(PLAYLIST_ID,id)
+        intent.putExtra(PLAYLIST_ID,playlistId)
+        intent.putExtra(VIDEOS_AMOUNT,videosAmount)
+        intent.putExtra(PLAYLIST_NAME,playlistName)
+        intent.putExtra(PLAYLIST_DESCRIPTION,playlistDescription)
         startActivity(intent)
     }
 
     companion object{
         const val PLAYLIST_ID = "playlist id"
+        const val VIDEOS_AMOUNT = "videos amount"
+        const val PLAYLIST_NAME = "playlist name"
+        const val PLAYLIST_DESCRIPTION = "playlist description"
     }
 
 }

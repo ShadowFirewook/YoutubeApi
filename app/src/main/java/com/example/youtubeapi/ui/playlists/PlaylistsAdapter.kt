@@ -12,7 +12,7 @@ import com.example.youtubeapi.data.remote.model.Playlists
 
 class PlaylistsAdapter(
     private val playlistsList:ArrayList<Playlists.Item>,
-    private val onClick:(String) -> Unit
+    private val onClick:(String,String,String,String) -> Unit
 ): Adapter<PlaylistsAdapter.PlaylistsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaylistsViewHolder {
@@ -37,7 +37,7 @@ class PlaylistsAdapter(
             binding.tvVideosAmount.text = itemView.context.getString(R.string.video_series, item.contentDetails.itemCount.toString())
 
             itemView.setOnClickListener{
-                onClick(item.id)
+                onClick(item.id, item.contentDetails.itemCount.toString(),item.snippet.title,item.snippet.description)
             }
         }
 
