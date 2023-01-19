@@ -1,8 +1,13 @@
 package com.example.youtubeapi.ui.video
 
+import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.ViewGroup.LayoutParams
+import android.widget.Button
 import android.widget.Toast
 import com.example.youtubeapi.BuildConfig.API_KEY
+import com.example.youtubeapi.R
 import com.example.youtubeapi.databinding.ActivityVideoBinding
 import com.example.youtubeapi.ui.playlist_detail.PlaylistDetailActivity
 import com.google.android.youtube.player.YouTubeBaseActivity
@@ -65,6 +70,7 @@ class VideoActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedListener
         }
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun onClickDownload(){
 
         val checkedItem = intArrayOf(-1)
@@ -86,6 +92,10 @@ class VideoActivity : YouTubeBaseActivity(), YouTubePlayer.OnInitializedListener
 
             val customAlertDialog = alertDialog.create()
             customAlertDialog.show()
+
+            val btn:Button =customAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+            btn.setBackgroundColor(R.style.MyThemeOverlay_MaterialComponents_MaterialAlertDialog)
+            btn.layoutParams.width = LayoutParams.MATCH_PARENT
         }
     }
 
